@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login TocTalk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css" type="text/css">
+    <script src="/lib/jquery-3.2.0.min.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <script type="text/javascript" src="/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+</head>
+<body id="login-page">
+
+  <!--Header with Nav -->
+  <header class="text-right">
+      <form class="text-left search" method="GET">
+          <input name="q" type="text" placeholder="Search..">
+      </form>
+      <div class="menu-icon">
+          <div class="dropdown">
+              <span class="dropdown-toggle" role="button" id="dropdownSettings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <span class="hidden-xs hidden-sm">Settings</span> <i class="fa fa-cogs" aria-hidden="true"></i>
+              </span>
+              <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownSettings">
+                  <li>
+                      <a href="settings.html" title="Settings" data-toggle="modal" data-target="#settingsmodal">
+                          <div class="col-xs-4">
+                              <i class="fa fa-wrench" aria-hidden="true"></i>
+                          </div>
+                          <div class="col-xs-8 text-left">
+                              <span>Settings</span>
+                          </div>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#" title="Settings">
+                          <div class="col-xs-4">
+                              <i class="fa fa-question" aria-hidden="true"></i>
+                          </div>
+                          <div class="col-xs-8 text-left">
+                              <span>FAQ</span>
+                          </div>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#" title="Settings">
+                          <div class="col-xs-4">
+                              <i class="fa fa-sign-out" aria-hidden="true"></i>
+                          </div>
+                          <div class="col-xs-8 text-left">
+                              <span>Logout</span>
+                          </div>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <div class="second-icon dropdown menu-icon">
+          <span class="dropdown-toggle" role="button" id="dropdownNotification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <span class="hidden-xs hidden-sm">Notifications</span> <i class="fa fa-bell-o" aria-hidden="true"></i>
+      <!-- <span class="badge">2</span> -->
+          </span>
+          <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownNotification">
+              <li class="new-not">
+                  <a href="#" title="User name comment"><img src="https://placehold.it/300x300" alt="User name" class="img-circle img-user-mini"> User comments your post</a>
+              </li>
+              <li class="new-not">
+                  <a href="#" title="User name comment"><img src="https://placehold.it/300x300" alt="User name" class="img-circle img-user-mini"> User comments your post</a>
+              </li>
+              <li>
+                  <a href="#" title="User name comment"><img src="https://placehold.it/300x300" alt="User name" class="img-circle img-user-mini"> User comments your post</a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#" title="All notifications">All Notifications</a></li>
+          </ul>
+      </div>
+      <div class="second-icon menu-icon">
+          <span><a href="personal-profile.html" title="Profile"><span class="hidden-xs hidden-sm">Profile</span> <i class="fa fa-user" aria-hidden="true"></i></a>
+          </span>
+      </div>
+      <div class="second-icon menu-icon">
+          <span><a href="wall.html" title="Wall"><span class="hidden-xs hidden-sm">Wall</span> <i class="fa fa-database" aria-hidden="true"></i></a>
+          </span>
+      </div>
+  </header>
+
+
+
+    <div class="form-box">
+
+
+        <div class="form-logo">
+          <!-- <p class="text-center"><img src="https://placehold.it/300x50" alt="logo"></p> -->
+            <p class="text-center"><img src="/images/log_in_title_1.gif" alt="logo"></p>
+        </div>
+
+<!--
+        <script>
+    // This is called with the results from from FB.getLoginStatus().
+    function statusChangeCallback(response) {
+      console.log('statusChangeCallback');
+      console.log(response);
+      // The response object is returned with a status field that lets the
+      // app know the current login status of the person.
+      // Full docs on the response object can be found in the documentation
+      // for FB.getLoginStatus().
+      if (response.status === 'connected') {
+        // Logged into your app and Facebook.
+        testAPI();
+      } else {
+        alert('not loged');
+        // The person is not logged into your app or we are unable to tell.
+        document.getElementById('status').innerHTML = 'Please log ' +
+          'into this app.';
+      }
+    }
+
+    // This function is called when someone finishes with the Login
+    // Button.  See the onlogin handler attached to it in the sample
+    // code below.
+    function checkLoginState() {
+      FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+      });
+    }
+
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '170422620411803',
+        cookie     : true,  // enable cookies to allow the server to access
+                            // the session
+        xfbml      : true,  // parse social plugins on this page
+        version    : 'v2.8' // use graph api version 2.8
+      });
+
+      // Now that we've initialized the JavaScript SDK, we call
+      // FB.getLoginStatus().  This function gets the state of the
+      // person visiting this page and can return one of three states to
+      // the callback you provide.  They can be:
+      //
+      // 1. Logged into your app ('connected')
+      // 2. Logged into Facebook, but not your app ('not_authorized')
+      // 3. Not logged into Facebook and can't tell if they are logged into
+      //    your app or not.
+      //
+      // These three cases are handled in the callback function.
+
+      FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+      });
+
+    };
+
+    // Load the SDK asynchronously
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    // Here we run a very simple test of the Graph API after login is
+    // successful.  See statusChangeCallback() for when this call is made.
+    function testAPI() {
+      console.log('Welcome!  Fetching your information.... ');
+      FB.api('/', function(response) {
+        console.log('Successful login for: ' + response.name);
+        //document.getElementById('status').innerHTML ='Thanks for logging in, ' + response.name + '!';
+      });
+    }
+  </script>
+-->
+  <!--
+    Below we include the Login Button social plugin. This button uses
+    the JavaScript SDK to present a graphical Login button that triggers
+    the FB.login() function when clicked.
+  -->
+<!--
+  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+  </fb:login-button>
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div id="naverIdLogin" class="btn btn-social"> </div>
+<!-- //네이버아이디로로그인 버튼 노출 영역 -->
+
+      <!-- 네이버아디디로로그인 초기화 Script -->
+      <script type="text/javascript">
+      	var naverLogin = new naver.LoginWithNaverId(
+      		{
+      			clientId: "9ghRK8w3AR1GgxTJMFuo",
+      			callbackUrl: "https://toctalk.net/login",
+      			isPopup: false,
+            callbackHandle: true,
+      			loginButton: {color: "green", type: 3, height: 30} /* 로그인 버튼의 타입을 지정 */
+            //loginButton: {color: "white", type: 2, height: 30} //흰색 작은배너형 높이 30px
+            //loginButton: {color: "green", type: 3, height: 40} //녹색 큰배너형 높이 40p
+      		}
+      	);
+
+        naverLogin.init();
+
+        /* (4) Callback의 처리. 정상적으로 Callback 처리가 완료될 경우 main page로 redirect(또는 Popup close) */
+        window.addEventListener('load', function () {
+          naverLogin.getLoginStatus(function (status) {
+
+            if (status) {
+              console.log("======================= 로그인 성공");
+              /* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
+              var email = naverLogin.user.getEmail();
+              if( email == undefined || email == null) {
+                alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
+                /* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
+                naverLogin.reprompt();
+                return;
+              }
+              window.location.replace("/");
+              //window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port));
+            } else {
+              console.log("callback 처리에 실패하였습니다.");
+            }
+          });
+        });
+      </script>
+        <!--
+        <form>
+            <input type="text" class="form-control" placeholder="Username">
+            <input type="password" class="form-control" placeholder="Password">
+            <input type="checkbox"> Save Password
+            <input type="submit" class="btn btn-social" value="LOGIN">
+        </form>
+        <a href="#" class="login-action" title="Forgot password">
+            <p>Forgot your password?</p>
+        </a>
+
+
+        <a href="signin.html" class="login-action" title="Signi in">
+            <p>New User?</p>
+        </a>
+      -->
+    </div><!--Close form-box-->
+
+    <footer class="login-footer text-center">
+        <div class="col-xs-3">
+            <a class="login-action" href="" title="language">LANGUAGE</a>
+        </div>
+        <div class="col-xs-3">
+            <a class="login-action" href="" title="terms">TERMS</a>
+        </div>
+        <div class="col-xs-3">
+            <a class="login-action" href="" title="privacy">PRIVACY</a>
+        </div>
+        <div class="col-xs-3">
+            <a class="login-action" href="" title="careers">CAREERS</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>

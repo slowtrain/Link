@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Let's TocTalk</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css" type="text/css">
+    <script src="/lib/jquery-3.2.0.min.js"></script>
+    <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+    <script type="text/javascript" src="/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+
+</head>
+<body id="index">
+
+  <!--Header with Nav -->
+  <header class="text-right">
+
+      <div class="text-left logo">
+        <p class="text-center"><img src="/images/log_in_title_1.gif" alt="logo"></p>
+      </div>
+      <!--
+      <form class="text-left search" method="GET">
+          <input name="q" type="text" placeholder="Search..">
+      </form>
+    -->
+      <div class="menu-icon">
+          <div class="dropdown">
+              <span class="dropdown-toggle" role="button" id="dropdownSettings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <span class="hidden-xs hidden-sm">Settings</span> <i class="fa fa-cogs" aria-hidden="true"></i>
+              </span>
+              <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownSettings">
+                  <li>
+                      <a href="settings.html" title="Settings" data-toggle="modal" data-target="#settingsmodal">
+                          <div class="col-xs-4">
+                              <i class="fa fa-wrench" aria-hidden="true"></i>
+                          </div>
+                          <div class="col-xs-8 text-left">
+                              <span>Settings</span>
+                          </div>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#" title="Settings">
+                          <div class="col-xs-4">
+                              <i class="fa fa-question" aria-hidden="true"></i>
+                          </div>
+                          <div class="col-xs-8 text-left">
+                              <span>FAQ</span>
+                          </div>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#" title="Settings">
+                          <div class="col-xs-4">
+                              <i class="fa fa-sign-out" aria-hidden="true"></i>
+                          </div>
+                          <div class="col-xs-8 text-left">
+                              <span>Logout</span>
+                          </div>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <div class="second-icon dropdown menu-icon">
+          <span class="dropdown-toggle" role="button" id="dropdownNotification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <span class="hidden-xs hidden-sm">Notifications</span> <i class="fa fa-bell-o" aria-hidden="true"></i> <span class="badge">2</span>
+          </span>
+          <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownNotification">
+              <li class="new-not">
+                  <a href="#" title="User name comment"><img src="https://placehold.it/300x300" alt="User name" class="img-circle img-user-mini"> User comments your post</a>
+              </li>
+              <li class="new-not">
+                  <a href="#" title="User name comment"><img src="https://placehold.it/300x300" alt="User name" class="img-circle img-user-mini"> User comments your post</a>
+              </li>
+              <li>
+                  <a href="#" title="User name comment"><img src="https://placehold.it/300x300" alt="User name" class="img-circle img-user-mini"> User comments your post</a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#" title="All notifications">All Notifications</a></li>
+          </ul>
+      </div>
+      <div class="second-icon menu-icon">
+          <span><a href="personal-profile.html" title="Profile"><span class="hidden-xs hidden-sm">Profile</span> <i class="fa fa-user" aria-hidden="true"></i></a>
+          </span>
+      </div>
+      <div class="second-icon menu-icon">
+          <span><a href="wall.html" title="Wall"><span class="hidden-xs hidden-sm">Wall</span> <i class="fa fa-database" aria-hidden="true"></i></a>
+          </span>
+      </div>
+  </header>
+
+  <script type="text/javascript">
+    var naverLogin = new naver.LoginWithNaverId({
+        clientId: "9ghRK8w3AR1GgxTJMFuo",
+        callbackUrl: "https://toctalk.net/login",
+        isPopup: false,
+        callbackHandle: false
+      });
+
+    naverLogin.init();
+
+    window.addEventListener('load', function () {
+      naverLogin.getLoginStatus(function (status) {
+        console.log("!status : "+status);
+        if (status) {
+            var email = naverLogin.user.getEmail();
+            console.log("!email : "+email);
+			      //var name = naverLogin.user.getNickName();
+			      //var profileImage = naverLogin.user.getProfileImage();
+			      //var birthday = naverLogin.user.getBirthday();
+            //var uniqId = naverLogin.user.getId();
+			      //var age = naverLogin.user.getAge();
+        } else {
+          console.log("AccessToken이 올바르지 않습니다.");
+        }
+      });
+    });
+  </script>
+
+    <footer class="login-footer text-center">
+        <div class="col-xs-3">
+            <a class="login-action" href="" title="language">LANGUAGE</a>
+        </div>
+        <div class="col-xs-3">
+            <a class="login-action" href="" title="terms">TERMS</a>
+        </div>
+        <div class="col-xs-3">
+            <a class="login-action" href="" title="privacy">PRIVACY</a>
+        </div>
+        <div class="col-xs-3">
+            <a class="login-action" href="" title="careers">CAREERS</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>
