@@ -1,13 +1,13 @@
 package main
 
 import (
-	"toctalk/common"
-	"toctalk/home"
-	"toctalk/login"
-	"toctalk/personalprofile"
-	"toctalk/settings"
-	"toctalk/userprofile"
-	"toctalk/wall"
+	"toctalk.net/common"
+	"toctalk.net/home"
+	"toctalk.net/login"
+	"toctalk.net/personalprofile"
+	"toctalk.net/settings"
+	"toctalk.net/userprofile"
+	"toctalk.net/wall"
 
 	"github.com/gin-gonic/gin"
 )
